@@ -3,12 +3,27 @@ import './App.css';
 import Switch from "./Switch";
 import AuthService from './AuthService';
 
+//Test out if use State and Use Effect work
+
+
 function App() {
-  const [value, setValue] = useState(false);
+  const [isIN, setIsIN] = useState(false);
+	
+	
+useEffect(() => {
+		var data = AuthService.getCurrentUser(); // IMPLEMENT SERVICE TO GET IF USER IS CURRENTLY IN OR OUT
+		if (data = 'IN') {
+			useState(false)
+		} else {
+			useState(true)
+		}
+	}, []);
+	
+	
   const handleSubmit = async (e) => {
-		setValue(!value);
-    AuthService.postTimeINOUT(value);
-    console.log(value ? "Posted In time" : "Posted Out time")
+		setValue(!isIN);
+    AuthService.postTimeINOUT(isIN);
+    console.log(isIN ? "Posted In time" : "Posted Out time")
     
   }
 
@@ -17,7 +32,7 @@ function App() {
     <div className="app">
       <h1>inTIME</h1>
       <Switch
-        isOn={value}
+        isOn={isIN}
         onColor="#EF476F"
         handleToggle={handleSubmit}
       />
