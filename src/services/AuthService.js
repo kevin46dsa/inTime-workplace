@@ -45,7 +45,7 @@ const getCurrentUser = () => {
 
 const postTimeINOUT = (Value) => {
     return axios   
-		.post(API_URL + '/postintime', { body: Value })
+		.post(API_URL + '/users/postintime', { body: Value })
 		.then((response) => {
 			return response.data;
 		});
