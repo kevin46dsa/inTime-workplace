@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = `https://intimeapi.herokuapp.com/`;
+const API_URL = `https://intimeapi.herokuapp.com`;
 
 //axios call to server
 //this is changes
