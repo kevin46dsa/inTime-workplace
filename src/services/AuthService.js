@@ -44,9 +44,10 @@ const getCurrentUser = () => {
 	return JSON.parse(localStorage.getItem('user'));
 };
 
-const postTimeINOUT = (Value) => {
-    return axios   
-		.post(API_URL + '/users/postintime', { body: Value })
+const postTimeINOUT = (Value, date, time) => {
+    
+	return axios   
+		.post(API_URL + '/users/postintime', { body: Value, Date: date,Time:time})
 		.then((response) => {
 			return response.data;
 		});

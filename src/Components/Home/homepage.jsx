@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Switch from "./Switch";
-
+import moment from 'moment'
 import AuthService from '../../services/AuthService';
 
 //Test out if use State and Use Effect work
@@ -23,7 +23,9 @@ useEffect(() => {
 	
   const handleSubmit = async (e) => {
 		setIsIN(!isIN);
-    AuthService.postTimeINOUT(!isIN); //Negation sets it in the correct value
+    let date = moment().format('L'); 
+    let time = moment().format('LT');
+    AuthService.postTimeINOUT(!isIN, date, time); //Negation sets it in the correct value
     console.log(isIN ? "Posted Out time" : "Posted In time")
     
   }
