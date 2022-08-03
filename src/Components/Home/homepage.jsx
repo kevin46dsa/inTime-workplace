@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Table from './Table';
 import Switch from "./Switch";
 import moment from 'moment'
 import AuthService from '../../services/AuthService';
@@ -9,7 +9,7 @@ import AuthService from '../../services/AuthService';
 
 function home() {
   const [isIN, setIsIN] = useState(true);
-	
+	const [reloader, updateReloader] = useState(1);	
 	
 useEffect(() => {
 		var data = AuthService.getCurrentUser(); // IMPLEMENT SERVICE TO GET IF USER IS CURRENTLY IN OR OUT
@@ -19,6 +19,15 @@ useEffect(() => {
 			setIsIN(true)
 		}
 	}, []);
+	
+	const updatePieState = () => {
+		updateReloader(reloader + 1);
+		console.log('update reloader function', reloader);
+	};
+
+	useEffect(() => {
+		console.log('in reloader useEffect');
+	}, [reloader]);
 	
 	
   const handleSubmit = async (e) => {
@@ -53,6 +62,7 @@ useEffect(() => {
       <form action="/generateReport" method="GET"> 
       <button>Generate Report</button> 
       </form> 
+      <Table updatePieState={updatePieState} />
 
     </div>
   );
