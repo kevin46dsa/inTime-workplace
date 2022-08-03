@@ -1,6 +1,7 @@
 import axios from 'axios';
-const API_URL = `https://intimeapi.herokuapp.com`;
-//const API_URL = `http://localhost/8080`;
+
+import config from '../Config/Config';
+const API_URL = `${config.Server_url}`;
 
 //axios call to server
 //this is changes

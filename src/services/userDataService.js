@@ -1,6 +1,6 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-import config from '../Config/envVariables';
+import config from '../Config/Config';
 const API_URL = `${config.Server_url}/user/data`;
 //const Public_URL = `${config.Server_url}/public`;
 
