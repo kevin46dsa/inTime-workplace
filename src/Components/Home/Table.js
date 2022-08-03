@@ -6,6 +6,7 @@ import orderBy from 'lodash/orderBy';
 import UserService from '../../services/user.service';
 import transactionService from '../../services/add.transaction';
 import { useNavigate } from 'react-router-dom';
+import './Table.css';
 
 const ExpenseTable = ({ updatePieState }) => {
 	let navigate = useNavigate();
