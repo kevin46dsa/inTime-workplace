@@ -1,5 +1,6 @@
 import axios from 'axios';
 const API_URL = `https://intimeapi.herokuapp.com`;
+//const API_URL = `http://localhost/8080`;
 
 //axios call to server
 //this is changes
