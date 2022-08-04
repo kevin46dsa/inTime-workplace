@@ -1,8 +1,44 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 import config from '../Config/Config';
-const API_URL = `${config.Server_url}/user/data`;
+const API_URL = `${config.Server_url}/users`;
 //const Public_URL = `${config.Server_url}/public`;
+
+const getUserData = () => {
+	return axios
+		.get(API_URL + '/specificUserData')
+		.then((response) => {
+			return response.data;
+		});
+};
+
+/* Code from Original user service to get user data
+const getUserData = () => {
+	return axios
+		.get(API_URL + '/alltransactions', { headers: authHeader() })
+		.then((response) => {
+			return response.data;
+		});
+};
+
+*/
+
+const getIsUserInOrOut = () => {
+	return axios
+		.get(API_URL + '/getIsUserInOrOut')
+		.then((response) => {
+			return response.data;
+		});
+};
+
+const postTimeINOUT = (Value, date, time) => {
+    
+	return axios   
+		.post(API_URL + '/postintime', {Value,date,time})
+		.then((response) => {
+			return response.data;
+		});
+}
 
 const getUserIncome = (TransactionID) => {
 	return axios
@@ -115,7 +151,7 @@ const getSetAside = ()=> {
     });
 };
 
-const transactionService = {
+const userDataService = {
 	getUserIncome,
 	getUserExpense,
 	postUserIncome,
@@ -127,5 +163,8 @@ const transactionService = {
 	createSetAside,
 	deleteSetAside,
 	getSetAside,
+	getUserData,
+	postTimeINOUT,
+	getIsUserInOrOut,
 };
 export default userDataService;

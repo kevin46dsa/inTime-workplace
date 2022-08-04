@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import config from '../Config/Config';
-const API_URL = `${config.Server_url}`;
+const API_URL = `${config.Server_url}/auth`;
 
 //axios call to server
 //this is changes
@@ -45,21 +45,14 @@ const getCurrentUser = () => {
 	return JSON.parse(localStorage.getItem('user'));
 };
 
-const postTimeINOUT = (Value, date, time) => {
-    
-	return axios   
-		.post(API_URL + '/users/postintime', {Value,date,time})
-		.then((response) => {
-			return response.data;
-		});
-}
+
 
 const AuthService = {
 	signup,
 	login,
 	logout,
 	getCurrentUser,
-    postTimeINOUT,
+
 };
 
 export default AuthService;

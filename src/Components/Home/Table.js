@@ -3,12 +3,11 @@ import React, { useState, useEffect } from 'react';
 //import axios from "axios";
 //import mockData from "./mockData.json";
 import orderBy from 'lodash/orderBy';
-import UserService from '../../services/user.service';
-import transactionService from '../../services/add.transaction';
+import transactionService from '../../services/userDataService';
 import { useNavigate } from 'react-router-dom';
 import './Table.css';
 
-const ExpenseTable = ({ updatePieState }) => {
+const Table = ({ updatePieState }) => {
 	let navigate = useNavigate();
 	const [data, setdata] = useState([]);
 	const [oneTime, setOneTime] = useState([]);
@@ -18,7 +17,7 @@ const ExpenseTable = ({ updatePieState }) => {
 	const [toggleIncomeTable, setIncomeToggleTable] = useState('OneTime');
 
 	useEffect(() => {
-		UserService.getUserTransactionData().then((response) => {
+		transactionService.getUserData().then((response) => {
 			if (response.data) {
 				setdata(
 					orderBy(response.data.Expenditure.OneTime, ['_id'], ['desc']).slice(
