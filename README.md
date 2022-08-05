@@ -30,7 +30,7 @@ this will empty the edit table which improves load time
 Moving the data into another document creates an archive of all the data which can further be used for analysing employee performance
 
 
-
+**Note: This project is still in it development Phase!**
 
 
 
