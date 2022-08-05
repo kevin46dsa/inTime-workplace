@@ -20,11 +20,14 @@ the user can also request a PDF or mail of the following to verify with HR in ca
 ## ADMIN FEATURES
 
 ### EDIT Table 
-is a feature that enables only the admin(HR) to make any changes 
+is a feature that enables only the admin(HR) to make any changes to an employees timings. it offers simple CRUD(Create, Read, Update, Delete) features
+if the Employee forgets to clock in or out the Admin can Create a new coloum in the edit table and add the timings
 
 
-
-
+### Complete Payment Cycle 
+once the payment cycle is completed for instance bi-weekly payments or monthly payments the admin simply clicks a button which refreshes all the data for that user and stores it into another database 
+this will empty the edit table which improves load time 
+Moving the data into another document creates an archive of all the data which can further be used for analysing employee performance
 
 
 
