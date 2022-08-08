@@ -1,3 +1,39 @@
+# inTime Workplace (In Development)
+MERN Full Stack Project Created by Kevin Dsa
+
+inTime Workplace is an app that records an employes In and out time using a single toogle button
+inTime Features a wide variety of features enabling the employe to get a better undrstanging of his/her Work Timing
+
+## Toggle Button
+
+Simplicity is Key,
+Hence i have incorporated a single toggle button to record the Employees in and out timings.
+the toggle button is used so that the employee doesnt have to manually enter the current date or time
+it also prevents the user from making multiple or recurring 'IN'/'OUT' records causing the data to be redudant
+the time and date is automatically recorded according to the users curent timezone and location.
+
+## Get Report
+
+is a feature that enables the user to check his/her timings for that payment cycle
+the user can also request a PDF or mail of the following to verify with HR in case of a dispute
+
+## ADMIN FEATURES
+
+### EDIT Table 
+is a feature that enables only the admin(HR) to make any changes to an employees timings. it offers simple CRUD(Create, Read, Update, Delete) features
+if the Employee forgets to clock in or out the Admin can Create a new coloum in the edit table and add the timings
+
+
+### Complete Payment Cycle 
+once the payment cycle is completed for instance bi-weekly payments or monthly payments the admin simply clicks a button which refreshes all the data for that user and stores it into another database 
+this will empty the edit table which improves load time 
+Moving the data into another document creates an archive of all the data which can further be used for analysing employee performance
+
+
+**Note: This project is still in it development Phase!**
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
