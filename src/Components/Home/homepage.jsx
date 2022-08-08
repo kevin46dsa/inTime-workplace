@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import Table from './Table';
+
 import Switch from "./Switch";
 import moment from 'moment'
 import AuthService from '../../services/AuthService';
 import transactionService from '../../services/userDataService';
+import { useNavigate } from 'react-router-dom';
 
 //Test out if use State and Use Effect work
 
 
 function home() {
+  let navigate = useNavigate();
   const [isIN, setIsIN] = useState(false);
-	//const [reloader, updateReloader] = useState(1);	
-	/* use this function to get user data
+	const [accessToken, setAccessToken] = useState(undefined);
+	const [reloader, updateReloader] = useState(1);
+  /* use this function to get user data
   useEffect(() => {
 		var data = transactionService.getUserData(); // IMPLEMENT SERVICE TO GET IF USER IS CURRENTLY IN OR OUT
 		if (data = 'IN') {
@@ -32,7 +35,19 @@ useEffect(() => {
 		}
 	},[]);
 	*/
-   /*
+  
+	
+	useEffect(() => {
+		var data = AuthService.getCurrentUser();
+		if (data) {
+			// setContent(data.user.userName);
+			setAccessToken(data.accessToken);
+		} else {
+			// setContent("");
+			setAccessToken(undefined);
+		}
+	}, []);
+
 	const updatePieState = () => {
 		updateReloader(reloader + 1);
 		console.log('update reloader function', reloader);
@@ -41,7 +56,6 @@ useEffect(() => {
 	useEffect(() => {
 		console.log('in reloader useEffect');
 	}, [reloader]);
-	*/
 	
   const handleSubmit = async (e) => {
 		setIsIN(!isIN);
@@ -53,14 +67,21 @@ useEffect(() => {
     
   }
 
-  //this is the table add to render once Done
-  //<Table updatePieState={updatePieState} />
+  const navigateToAdminPage = async (e) => {
+    navigate('/admintable');
+  }
 
   // isOn={isIN}
 
   return (
-    <div className="app">
+
+    <div>
       <h1>inTIME</h1>
+			{accessToken !== undefined ? (
+				<React.Fragment>
+
+    <div className="app">
+      
       
       <Switch
         isOn={isIN}
@@ -70,19 +91,31 @@ useEffect(() => {
       <h2>OUT &nbsp;&nbsp;IN</h2>
     
 
-
       <form action="/createNewUser" method="POST"> 
       <button>Create New User</button> 
       </form> 
       <form action="/gettotalhours" method="GET"> 
       <button>Get total hours</button> 
       </form> 
-      <form action="/generateReport" method="GET"> 
-      <button>Generate Report</button> 
-      </form> 
       
-
+      <button onClick={navigateToAdminPage}>Admin Table</button>    
     </div>
+    </React.Fragment>
+			) : (
+				<React.Fragment>
+<div className="card posD">
+						<h1>Restricted area</h1>
+						<h2>
+							<a href="/login" className="a12">
+								Sign In
+							</a>{' '}
+							to Access DashBoard
+						</h2>
+					</div>
+        </React.Fragment>
+        )}
+        </div>
+ 
   );
 }
 

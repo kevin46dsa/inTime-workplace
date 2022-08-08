@@ -5,6 +5,7 @@ import { Routes as Switch, Route as Routing } from "react-router-dom";
 import Home from "../Components/Home/homepage";
 import Login from "../Components/login/login";
 import Signup from "../Components/Signup";
+import AdminTable from "../Components/AdminTable/Admintable"
 
 import Layout from "../Components/layout/layout";
 // import Review from "../Components/Review/Review";
@@ -18,6 +19,7 @@ const Routesr = () => {
         <Switch>
           {/* Auth Routes */}
           <Routing exact path="/" element={<Home />} />
+          <Routing exact path="/admintable" element={<AdminTable />} />
           <Routing exact path="/login" element={<Login />} />
           <Routing exact path="/signup" element={<Signup />} />
 
